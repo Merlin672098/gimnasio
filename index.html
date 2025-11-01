@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymPro Elite - Centro de Entrenamiento Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e74c3c;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid #e74c3c;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-light {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .section-dark {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .section-gray {
+            background: #ecf0f1;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-left: 4px solid #e74c3c;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #e74c3c;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Equipment Section */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .equipment-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .equipment-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .equipment-card-content {
+            padding: 1.5rem;
+        }
+
+        .equipment-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .equipment-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Trainers Section */
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .trainer-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .trainer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trainer-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid #e74c3c;
+        }
+
+        .trainer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .trainer-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .trainer-specialty {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Classes Grid */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .class-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .class-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .class-card:hover .class-image img {
+            transform: scale(1.1);
+        }
+
+        .class-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(231, 76, 60, 0.8), rgba(44, 62, 80, 0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .class-card:hover .class-overlay {
+            opacity: 1;
+        }
+
+        .class-icon {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .class-content {
+            padding: 1.5rem;
+        }
+
+        .class-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .class-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .class-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .class-info span {
+            font-size: 0.9rem;
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        /* Schedule Table */
+        .schedule-container {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-table th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .schedule-table td {
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .schedule-table tr:hover td {
+            background: #f8f9fa;
+        }
+
+        .class-slot {
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .class-slot:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            background: white;
+            color: #2c3e50;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e74c3c;
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .classes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-table th,
+            .schedule-table td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">GymPro Elite</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#equipamiento">Equipamiento</a></li>
+                <li><a href="#clases">Clases</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>GymPro Elite</h1>
+            <p>Centro de Entrenamiento Profesional con Equipamiento de Última Generación</p>
+            <a href="#nosotros" class="cta-button">Descubre Más</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="nosotros" class="section-light fade-in">
+            <div class="container">
+                <h2>Sobre Nosotros</h2>
+                <p class="section-subtitle">GymPro Elite es más que un gimnasio. Somos tu socio en el camino hacia una vida más saludable y fuerte.</p>
+                
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h3>Excelencia en Entrenamiento</h3>
+                        <p>Con más de 10 años de experiencia, ofrecemos un ambiente profesional equipado con la más alta tecnología en fitness. Nuestras instalaciones de 1,500 m² están diseñadas para satisfacer todas tus necesidades de entrenamiento.</p>
+                        
+                        <p>Contamos con entrenadores personales certificados que te guiarán en cada paso de tu transformación física, adaptando los entrenamientos a tus objetivos específicos.</p>
+                        
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">🏋️</div>
+                                <span><strong>500+ Equipos</strong><br>Máquinas de última generación</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">👨‍💼</div>
+                                <span><strong>8 Entrenadores</strong><br>Profesionales certificados</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📊</div>
+                                <span><strong>Seguimiento</strong><br>Evaluaciones personalizadas</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🏆</div>
+                                <span><strong>Resultados</strong><br>Garantía de progreso</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Interior del gimnasio">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipamiento" class="section-dark fade-in">
+            <div class="container">
+                <h2 style="color: white;">Equipamiento Premium</h2>
+                <p class="section-subtitle" style="color: #bdc3c7;">Maquinaria de las marcas más reconocidas mundialmente para garantizar tu seguridad y máximo rendimiento.</p>
+                
+                <div class="equipment-grid">
+                    <div class="equipment-card">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Área de pesas">
+                        <div class="equipment-card-content">
+                            <h4>Zona de Pesas Libres</h4>
+                            <p>Completo set de mancuernas (1-50kg), barras olímpicas, discos de hierro fundido y racks de squat profesionales. Equipamiento Hammer Strength para máxima durabilidad.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="equipment-card">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Máquinas de cardio">
+                        <div class="equipment-card-content">
+                            <h4>Cardio de Última Generación</h4>
+                            <p>40+ máquinas cardiovasculares: cintas de correr Life Fitness, bicicletas elípticas Precor, y remos Concept2. Todas con pantallas táctiles y conectividad.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="equipment-card">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Máquinas de fuerza">
+                        <div class="equipment-card-content">
+                            <h4>Estaciones Multifuncionales</h4>
+                            <p>Máquinas selectorizadas Technogym para trabajo específico de cada grupo muscular. Poleas ajustables, prensas y estaciones para ejercicios funcionales.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trainers-grid" style="margin-top: 4rem;">
+                    <div class="trainer-card">
+                        <div class="trainer-image">
+                            <img src="https://images.unsplash.com/photo-1594736797933-d0ac64021660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Entrenador Carlos">
+                        </div>
+                        <h4>Carlos Mendez</h4>
+                        <div class="trainer-specialty">Entrenador Principal</div>
+                        <p>15 años de experiencia. Especialista en fuerza y acondicionamiento físico. Certificado NSCA-CSCS.</p>
+                    </div>
+                    
+                    <div class="trainer-card">
+                        <div class="trainer-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Entrenadora Maria">
+                        </div>
+                        <h4>María García</h4>
+                        <div class="trainer-specialty">Especialista en Fitness Grupal</div>
+                        <p>Instructora certificada en Zumba, Pilates y entrenamientos funcionales. 8 años motivando grupos.</p>
+                    </div>
+                    
+                    <div class="trainer-card">
+                        <div class="trainer-image">
+                            <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Entrenador David">
+                        </div>
+                        <h4>David Ruiz</h4>
+                        <div class="trainer-specialty">Coach de Boxeo</div>
+                        <p>Ex-boxeador profesional. Especialista en deportes de combate y preparación física de alto rendimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="clases" class="section-gray fade-in">
+            <div class="container">
+                <h2>Clases Dirigidas</h2>
+                <p class="section-subtitle">Programas de entrenamiento grupal con instructores especializados para maximizar tu rendimiento y motivación.</p>
+                
+                <div class="classes-grid">
+                    <div class="class-card">
+                        <div class="class-image">
+                            <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Clase de Boxeo">
+                            <div class="class-overlay">
+                                <div class="class-icon">🥊</div>
+                            </div>
+                        </div>
+                        <div class="class-content">
+                            <h3>Boxeo Fitness</h3>
+                            <p>Entrenamiento cardiovascular de alta intensidad combinando técnicas de boxeo con acondicionamiento físico. Mejora coordinación, fuerza y resistencia.</p>
+                            <div class="class-info">
+                                <span>Duración: 60 min</span>
+                                <span>Nivel: Todos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card">
+                        <div class="class-image">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Clase de Zumba">
+                            <div class="class-overlay">
+                                <div class="class-icon">💃</div>
+                            </div>
+                        </div>
+                        <div class="class-content">
+                            <h3>Zumba Fitness</h3>
+                            <p>Baile cardiovascular que combina ritmos latinos con ejercicios aeróbicos. Una forma divertida y efectiva de quemar calorías mientras te diviertes.</p>
+                            <div class="class-info">
+                                <span>Duración: 45 min</span>
+                                <span>Nivel: Principiante</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card">
+                        <div class="class-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Clase de Crossfit">
+                            <div class="class-overlay">
+                                <div class="class-icon">🏋️</div>
+                            </div>
+                        </div>
+                        <div class="class-content">
+                            <h3>CrossFit</h3>
+                            <p>Entrenamiento funcional de alta intensidad que combina levantamiento de pesas, ejercicios cardiovasculares y movimientos gimnásticos para un fitness completo.</p>
+                            <div class="class-info">
+                                <span>Duración: 50 min</span>
+                                <span>Nivel: Intermedio</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card">
+                        <div class="class-image">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Clase de Yoga">
+                            <div class="class-overlay">
+                                <div class="class-icon">🧘</div>
+                            </div>
+                        </div>
+                        <div class="class-content">
+                            <h3>Yoga Hatha</h3>
+                            <p>Práctica que combina posturas físicas, respiración y meditación para mejorar la flexibilidad, fuerza y bienestar mental. Perfecto para el equilibrio cuerpo-mente.</p>
+                            <div class="class-info">
+                                <span>Duración: 60 min</span>
+                                <span>Nivel: Todos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card">
+                        <div class="class-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Clase de Spinning">
+                            <div class="class-overlay">
+                                <div class="class-icon">🚴</div>
+                            </div>
+                        </div>
+                        <div class="class-content">
+                            <h3>Spinning Indoor</h3>
+                            <p>Ciclismo indoor en bicicletas estáticas con música motivacional. Excelente ejercicio cardiovascular que simula diferentes terrenos y intensidades.</p>
+                            <div class="class-info">
+                                <span>Duración: 45 min</span>
+                                <span>Nivel: Todos</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="class-card">
+                        <div class="class-image">
+                            <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Clase de HIIT">
+                            <div class="class-overlay">
+                                <div class="class-icon">⚡</div>
+                            </div>
+                        </div>
+                        <div class="class-content">
+                            <h3>HIIT Training</h3>
+                            <p>Entrenamiento de intervalos de alta intensidad que maximiza la quema de calorías en sesiones cortas. Combina ejercicios de fuerza y cardio.</p>
+                            <div class="class-info">
+                                <span>Duración: 30 min</span>
+                                <span>Nivel: Avanzado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="horarios" class="section-light fade-in">
+            <div class="container">
+                <h2>Horarios de Clases</h2>
+                <p class="section-subtitle">Programa semanal de clases dirigidas. Todas las clases requieren reserva previa.</p>
+                
+                <div class="schedule-container">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Horario</th>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miércoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                                <th>Sábado</th>
+                                <th>Domingo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>07:00</strong></td>
+                                <td><div class="class-slot">Yoga</div></td>
+                                <td><div class="class-slot">HIIT</div></td>
+                                <td><div class="class-slot">Yoga</div></td>
+                                <td><div class="class-slot">HIIT</div></td>
+                                <td><div class="class-slot">Yoga</div></td>
+                                <td><div class="class-slot">Spinning</div></td>
+                                <td>Cerrado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>09:00</strong></td>
+                                <td><div class="class-slot">Spinning</div></td>
+                                <td><div class="class-slot">Boxeo</div></td>
+                                <td><div class="class-slot">Spinning</div></td>
+                                <td><div class="class-slot">Boxeo</div></td>
+                                <td><div class="class-slot">Spinning</div></td>
+                                <td><div class="class-slot">Zumba</div></td>
+                                <td>Cerrado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>11:00</strong></td>
+                                <td><div class="class-slot">Zumba</div></td>
+                                <td><div class="class-slot">CrossFit</div></td>
+                                <td><div class="class-slot">Zumba</div></td>
+                                <td><div class="class-slot">CrossFit</div></td>
+                                <td><div class="class-slot">Zumba</div></td>
+                                <td><div class="class-slot">Yoga</div></td>
+                                <td>Cerrado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>17:00</strong></td>
+                                <td><div class="class-slot">HIIT</div></td>
+                                <td><div class="class-slot">Spinning</div></td>
+                                <td><div class="class-slot">HIIT</div></td>
+                                <td><div class="class-slot">Spinning</div></td>
+                                <td><div class="class-slot">HIIT</div></td>
+                                <td><div class="class-slot">Boxeo</div></td>
+                                <td>Cerrado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>19:00</strong></td>
+                                <td><div class="class-slot">Boxeo</div></td>
+                                <td><div class="class-slot">Zumba</div></td>
+                                <td><div class="class-slot">Boxeo</div></td>
+                                <td><div class="class-slot">Zumba</div></td>
+                                <td><div class="class-slot">Boxeo</div></td>
+                                <td><div class="class-slot">CrossFit</div></td>
+                                <td>Cerrado</td>
+                            </tr>
+                            <tr>
+                                <td><strong>20:00</strong></td>
+                                <td><div class="class-slot">CrossFit</div></td>
+                                <td><div class="class-slot">Yoga</div></td>
+                                <td><div class="class-slot">CrossFit</div></td>
+                                <td><div class="class-slot">Yoga</div></td>
+                                <td><div class="class-slot">CrossFit</div></td>
+                                <td>-</td>
+                                <td>Cerrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h4 style="color: #e74c3c; margin-bottom: 1rem;">Información Importante</h4>
+                    <p><strong>Horario de Atención:</strong> Lunes a Sábado 6:00 - 22:00 hrs | Domingos: Cerrado</p>
+                    <p><strong>Reservas:</strong> Las clases tienen cupo limitado. Reserva con 24 hrs de anticipación</p>
+                    <p><strong>Cancelaciones:</strong> Hasta 2 horas antes del inicio de la clase</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section fade-in">
+            <div class="container">
+                <h2 style="color: white;">Únete a GymPro Elite</h2>
+                <p class="section-subtitle" style="color: #bdc3c7;">Comienza tu transformación hoy. Nuestros especialistas te ayudarán a crear un plan personalizado.</p>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+591 123456789" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edad">Edad</label>
+                        <input type="number" id="edad" name="edad" placeholder="Tu edad" min="16" max="80" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="objetivo">Objetivo Principal</label>
+                        <select id="objetivo" name="objetivo" required>
+                            <option value="">Selecciona tu objetivo</option>
+                            <option value="perdida-peso">Pérdida de Peso</option>
+                            <option value="ganancia-muscular">Ganancia Muscular</option>
+                            <option value="tonificacion">Tonificación</option>
+                            <option value="resistencia">Mejorar Resistencia</option>
+                            <option value="fuerza">Aumentar Fuerza</option>
+                            <option value="bienestar">Bienestar General</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experiencia">Experiencia Previa</label>
+                        <select id="experiencia" name="experiencia" required>
+                            <option value="">Selecciona tu nivel</option>
+                            <option value="principiante">Principiante</option>
+                            <option value="intermedio">Intermedio</option>
+                            <option value="avanzado">Avanzado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clase-interes">Clase de Mayor Interés</label>
+                        <select id="clase-interes" name="clase-interes">
+                            <option value="">Selecciona una clase</option>
+                            <option value="boxeo">Boxeo Fitness</option>
+                            <option value="zumba">Zumba</option>
+                            <option value="crossfit">CrossFit</option>
+                            <option value="yoga">Yoga</option>
+                            <option value="spinning">Spinning</option>
+                            <option value="hiit">HIIT Training</option>
+                            <option value="entrenamiento-personal">Entrenamiento Personal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Información Adicional</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre lesiones previas, objetivos específicos o cualquier información que consideres importante..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Solicitar Información</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GymPro Elite</h4>
+                    <p>Centro de Entrenamiento Profesional</p>
+                    <p>Más de 10 años transformando vidas</p>
+                    <p>Certificado por las mejores organizaciones fitness</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📍 Av. Fitness Premium 456, Ciudad</p>
+                    <p>📞 (+34) 915 123 456</p>
+                    <p>📧 info@gymproelite.com</p>
+                    <p>🌐 www.gymproelite.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <p><strong>Lunes - Viernes:</strong> 6:00 - 22:00</p>
+                    <p><strong>Sábados:</strong> 7:00 - 20:00</p>
+                    <p><strong>Domingos:</strong> Cerrado</p>
+                    <p><strong>Festivos:</strong> Horario especial</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <p>• Entrenamiento Personal</p>
+                    <p>• Clases Dirigidas</p>
+                    <p>• Evaluación Física</p>
+                    <p>• Planes Nutricionales</p>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #34495e; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2024 GymPro Elite. Todos los derechos reservados.</p>
+                <p>Licencia Sanitaria: ES-2024-001 | Registro Mercantil: A-12345678</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        //animaciones del scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.5)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            }
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validación básica
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const edad = document.getElementById('edad').value;
+            const objetivo = document.getElementById('objetivo').value;
+            const experiencia = document.getElementById('experiencia').value;
+            
+            if (!nombre || !email || !telefono || !edad || !objetivo || !experiencia) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+            
+            if (edad < 16 || edad > 80) {
+                alert('La edad debe estar entre 16 y 80 años.');
+                return;
+            }
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.style.background = '#f39c12';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = '✓ ¡Solicitud Enviada!';
+                submitBtn.style.background = '#27ae60';
+                
+                alert('¡Gracias por tu interés! Nos pondremos en contacto contigo en las próximas 24 horas para agendar tu evaluación gratuita.');
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '#e74c3c';
+                    submitBtn.disabled = false;
+                    this.reset();
+                }, 3000);
+            }, 2000);
+        });
+
+        document.querySelectorAll('.class-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                const className = this.textContent;
+                const confirmation = confirm(`¿Deseas reservar la clase de ${className}? Te redirigiremos al formulario de contacto para completar tu reserva.`);
+                
+                if (confirmation) {
+                    // Scroll al formulario y pre-seleccionar la clase
+                    document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+                    
+                    setTimeout(() => {
+                        const claseSelect = document.getElementById('clase-interes');
+                        const classMap = {
+                            'Boxeo': 'boxeo',
+                            'Zumba': 'zumba',
+                            'CrossFit': 'crossfit',
+                            'Yoga': 'yoga',
+                            'Spinning': 'spinning',
+                            'HIIT': 'hiit'
+                        };
+                        
+                        if (classMap[className]) {
+                            claseSelect.value = classMap[className];
+                            claseSelect.style.border = '2px solid #e74c3c';
+                            
+                            setTimeout(() => {
+                                claseSelect.style.border = '2px solid #ecf0f1';
+                            }, 2000);
+                        }
+                    }, 1000);
+                }
+            });
+        });
+
+        document.querySelectorAll('.equipment-card, .trainer-card, .class-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const contact = document.querySelector('.contact-section');
+            
+            if (hero) {
+                const rate = scrolled * -0.3;
+                hero.style.backgroundPosition = `center ${rate}px`;
+            }
+            
+            if (contact) {
+                const rate = scrolled * -0.2;
+                contact.style.backgroundPosition = `center ${rate}px`;
+            }
+        });
+
+        const logo = document.querySelector('.logo');
+        const navLinks = document.querySelector('.nav-links');
+        
+        logo.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(0, 0, 0, 0.95)';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderRadius = '0 0 10px 10px';
+            }
+        });
+
+        //animacion de imagenes
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '0';
+                this.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => {
+                    this.style.opacity = '1';
+                }, 100);
+            });
+        });
+
+        console.log('GymPro Elite - Sistema cargado correctamente');
+    </script>
+</body>
+</html>
